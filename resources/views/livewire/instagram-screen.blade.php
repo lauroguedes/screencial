@@ -18,7 +18,7 @@ new class extends Component {
     <div class="bg-gray-300 p-3 overflow-auto flex flex-col gap-3">
         <x-card header="HEADER" class="flex flex-col gap-3">
             <x-upload
-                wire:model="photo"
+                wire:model.live="photo"
                 label="Profile Photo" />
             <x-input
                 wire:model="title"
@@ -71,9 +71,27 @@ new class extends Component {
     </div>
     <div class="bg-gray-200 col-span-2 flex items-center justify-center">
         <div class="w-4/6 bg-white rounded shadow h-4/6 p-10">
-            <div class="w-full h-full bg-gray-500">
+            <div class="w-full h-full">
                 <div class="grid grid-rows-6 h-full">
-                    <header class="bg-amber-300">header</header>
+                    <header class="flex justify-between items-center p-2">
+                        <div class="flex justify-start items-center gap-2">
+                            <div class="rounded-full overflow-hidden bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500 p-0.5">
+                                <div class="flex h-full w-full bg-transparent items-center justify-center">
+                                    <x-avatar image="https://picsum.photos/200/200" lg borderless />
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-start items-center gap-2">
+                                    <span class="font-bold text-xl" x-text="$wire.title"></span>
+                                    <x-icon x-show="$wire.showVerifyStamp" name="check-badge" class="size-4 text-blue-600"/>
+                                </div>
+                                <div class="text-md" x-text="$wire.subTitle"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <x-icon name="ellipsis-horizontal" class="size-7"/>
+                        </div>
+                    </header>
                     <main class="bg-amber-400 row-span-4">main</main>
                     <footer class="bg-amber-600">footer</footer>
                 </div>
